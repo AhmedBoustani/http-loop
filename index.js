@@ -30,7 +30,7 @@ Number of requests: ${data.length}
 `
 const filePath = `./logs/${dd}-${mm}-${yy}@${hh}:${mn}:${ss}.txt`;
 fs.mkdir('./logs', (err) => {
-  if (err.code !== 'EEXIST') res.error(err)
+  if (err.code !== 'EEXIST') print.error(err)
 })
 
 fs.writeFile(filePath,
