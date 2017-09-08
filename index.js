@@ -13,6 +13,7 @@ const options = {
   json: true
 };
 
+
 const now = new Date();
 const yy = now.getFullYear();
 const mm = now.getMonth() + 1;
@@ -28,6 +29,10 @@ Number of requests: ${data.length}
 
 `
 const filePath = `./logs/${dd}-${mm}-${yy}@${hh}:${mn}:${ss}.txt`;
+fs.mkdir('./logs', (err) => {
+  if (err.code !== 'EEXIST') res.error(err)
+})
+
 fs.writeFile(filePath,
   message,
   (err) => {
