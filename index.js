@@ -1,11 +1,16 @@
 const usage = require('./src/usage');
 const send = require('./src/main');
+const clearLogs = require('./src/logs').clear;
 
 process.argv.map(arg => {
   switch (arg) {
     case '--help':
     case '-h':
       usage();
+      process.exit(0);
+    case '--clear-log':
+    case '-clog':
+      clearLogs();
       process.exit(0);
   }
 });

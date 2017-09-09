@@ -6,5 +6,8 @@ module.exports = {
   },
   error: (msg) => {
     console.log(chalk.red('error:'), msg);
+  },
+  ok: (msg) => {
+    console.log(chalk.green('ok:'), msg);
   }
 }

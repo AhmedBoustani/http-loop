@@ -8,12 +8,13 @@ const dd = now.getDate();
 const hh = now.getHours();
 const mn = now.getMinutes();
 const ss = now.getSeconds();
-const filePath = `./usr/logs/${dd}-${mm}-${yy}@${hh}:${mn}:${ss}.txt`;
+const dir = './usr/logs';
+const filePath = `${dir}/${dd}-${mm}-${yy}@${hh}:${mn}:${ss}.txt`;
 
 module.exports = {
   init: (options, len) => {
     // Create logs directory if not exists
-    fs.mkdir('./usr/logs', (err) => {
+    fs.mkdir(dir, (err) => {
       if (err && err.code !== 'EEXIST') {
         print.error(err);
         process.exit(1);
@@ -32,7 +33,7 @@ Number of requests: ${len}
           print.error(err);
           process.exit(1);
         }
-        print.info(`Created new log file with the name ${filePath.slice(12)}`);
+        print.ok(`Created new log file with the name ${filePath.slice(12)}`);
         print.info('Check log file for the responses');
     });
   },
@@ -45,5 +46,22 @@ Number of requests: ${len}
         process.exit(1);
       }
     });
+  },
+
+  clear: () => {
+    print.info('deleting logs...');
+    if (!fs.existsSync(dir)) {
+      print.ok('there are no logs to delete');
+      process.exit(0);
+    }
+    fs.readdirSync(dir).map(x => {
+      fs.unlink(`${dir}/${x}`, (err) => {
+        if (err) {
+          print.error(err);
+          process.exit(1);
+        }
+      });
+    });
+    print.ok('successfully deleted logs');
   }
 };
