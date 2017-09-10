@@ -1,6 +1,6 @@
 {
   "name": "request-in-loop",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Send HTTP requests in a loop",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,11 @@
     "HTTP",
     "nodejs"
   ],
-  "author": "Ahmed Amine Boustani",
+  "author": "Ahmed Amine Boustani <ahmed.a.boustani@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/AhmedBoustani/loop-request.git"
+  },
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.1.0"
