@@ -1,4 +1,4 @@
-# loop-request
+# http-loop :construction:
 
 Send an HTTP request in a loop
 
@@ -21,3 +21,8 @@ Insert necessary data in the `usr/` directory.
 ## TODO:
 - Add tests
 - switch to .json for the logs
+- clear body, headers, and params
+- set an rc
+- write better documentation
+- write better usage
+- add linter and setup .editorconfig
