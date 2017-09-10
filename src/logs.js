@@ -8,8 +8,8 @@ const dd = now.getDate();
 const hh = now.getHours();
 const mn = now.getMinutes();
 const ss = now.getSeconds();
-const dir = './usr/logs';
-const filePath = `${dir}/${dd}-${mm}-${yy}@${hh}:${mn}:${ss}.txt`;
+const dir = `${process.cwd()}/http-loop/logs`;
+const filePath = `${dir}/${dd}-${mm}-${yy}@${hh}:${mn}:${ss}.json`;
 
 module.exports = {
   init: (options, len) => {
@@ -20,14 +20,13 @@ module.exports = {
         process.exit(1);
       }
     });
-    const message =
-`Options:
-${JSON.stringify(options, null, 2)}
-Number of requests: ${len}
-`;
+    const message = {
+      options,
+      "Number of requests": len
+    }
     // log file header
     fs.writeFile(filePath,
-      message,
+      JSON.stringify(message, null, 2),
       (err) => {
         if(err) {
           print.error(err);

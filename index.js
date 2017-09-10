@@ -1,5 +1,6 @@
 const usage = require('./src/usage');
 const send = require('./src/main');
+const work = require('./src/workspace');
 const clearLogs = require('./src/logs').clear;
 
 process.argv.map(arg => {
@@ -11,6 +12,9 @@ process.argv.map(arg => {
     case '--clear-log':
     case '-clog':
       clearLogs();
+      process.exit(0);
+    case 'init':
+      work.init();
       process.exit(0);
   }
 });
