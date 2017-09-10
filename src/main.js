@@ -1,9 +1,9 @@
 const request = require('request');
 const print = require('./response');
 const logs = require('./logs');
-const headers = require('../usr/headers');
-const body = require('../usr/body');
-const params = require('../usr/params');
+const headers = require(`${process.cwd()}/http-loop/input/headers`);
+const body = require(`${process.cwd()}/http-loop/input/body`);
+const params = require(`${process.cwd()}/http-loop/input/params`);
 
 const options = {
   method: '',

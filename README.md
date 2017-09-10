@@ -20,9 +20,8 @@ Insert necessary data in the `usr/` directory.
 
 ## TODO:
 - Add tests
-- switch to .json for the logs
-- clear body, headers, and params
-- set an rc
+- fix bugs with POST and PUT regarding number of iterations
+- Check if JSON files are valid before doing work
 - write better documentation
 - write better usage
 - add linter and setup .editorconfig

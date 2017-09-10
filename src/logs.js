@@ -9,7 +9,8 @@ const hh = now.getHours();
 const mn = now.getMinutes();
 const ss = now.getSeconds();
 const dir = `${process.cwd()}/http-loop/logs`;
-const filePath = `${dir}/${dd}-${mm}-${yy}@${hh}:${mn}:${ss}.json`;
+const fileName = `${dd}-${mm}-${yy}@${hh}:${mn}:${ss}.json`;
+const filePath = `${dir}/${fileName}`;
 
 module.exports = {
   init: (options, len) => {
@@ -32,7 +33,7 @@ module.exports = {
           print.error(err);
           process.exit(1);
         }
-        print.ok(`Created new log file with the name ${filePath.slice(12)}`);
+        print.ok(`Created new log file with the name ${fileName}`);
         print.info('Check log file for the responses');
     });
   },
