@@ -1,9 +1,18 @@
 const request = require('request');
 const print = require('./response');
 const logs = require('./logs');
-const headers = require(`${process.cwd()}/http-loop/input/headers`);
-const body = require(`${process.cwd()}/http-loop/input/body`);
-const params = require(`${process.cwd()}/http-loop/input/params`);
+let headers;
+let body;
+let params;
+try {
+  body = require(`${process.cwd()}/http-loop/input/body`);
+  params = require(`${process.cwd()}/http-loop/input/params`);
+  headers = require(`${process.cwd()}/http-loop/input/headers`);
+}catch (e) {
+  print.error('CANNOT OPEN REQUIRED FILES')
+  print.error(e);
+  return
+}
 
 const options = {
   method: '',
@@ -30,29 +39,31 @@ function send_request () {
 }
 
 module.exports = {
-  get: (url, len) => {
+  get: (url, len = 1) => {
     options.url = url;
     options.method = 'GET';
     options.params = params;
     logs.init(options, len);
     loop(len)(send_request);
   },
-  post: (url, len) => {
+  post: (url, len = 1) => {
     options.url = url;
     options.method = 'POST';
     logs.init(options, len);
-    body.map(x => {
-      options.body = x;
-      send_request();
+    loop(len)(() => {
+      body.map(x => {
+        options.body = x;
+        send_request();
+      });
     });
   },
-  put: (url, len) => {
+  put: (url, len = 1) => {
     options.url = url;
     options.method = 'PUT';
     logs.init(options, len);
-    body.map(x => {
+    loop(len)(() => body.map(x => {
       options.body = x;
       send_request();
-    });
+    }));
   }
 };

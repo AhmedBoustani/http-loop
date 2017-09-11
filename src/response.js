@@ -9,5 +9,8 @@ module.exports = {
   },
   ok: (msg) => {
     console.log(chalk.green('ok:'), msg);
+  },
+  log: (msg) => {
+    console.log(msg);
   }
 }

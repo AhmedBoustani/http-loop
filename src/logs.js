@@ -13,7 +13,7 @@ const fileName = `${dd}-${mm}-${yy}@${hh}:${mn}:${ss}.json`;
 const filePath = `${dir}/${fileName}`;
 
 module.exports = {
-  init: (options, len) => {
+  init: (options, n, len) => {
     // Create logs directory if not exists
     fs.mkdir(dir, (err) => {
       if (err && err.code !== 'EEXIST') {
@@ -23,8 +23,10 @@ module.exports = {
     });
     const message = {
       options,
-      "Number of requests": len
-    }
+      "Number of requests": n,
+      "Input size:": len,
+      "data": []
+    };
     // log file header
     fs.writeFile(filePath,
       JSON.stringify(message, null, 2),
@@ -40,7 +42,9 @@ module.exports = {
 
   log: (body) => {
     // Add a new entry to the log file
-    fs.appendFile(filePath, JSON.stringify(body, null, 2), (err) => {
+    const response = require(filePath);
+    response.data.push(body);
+    fs.writeFile(filePath, JSON.stringify(response, null, 2), (err) => {
       if (err) {
         print.error(err);
         process.exit(1);
@@ -63,5 +67,17 @@ module.exports = {
       });
     });
     print.ok('successfully deleted logs');
+  },
+
+  head: () => {
+    const files = fs.readdirSync(dir);
+    // print.ok('')
+    if (!files.length) {
+      print.info('There are no logs to show');
+      return;
+    }
+    const f = require(`${dir}/${files[files.length - 1]}`)
+    print.ok(files[files.length - 1]);
+    print.log(JSON.stringify(f, null, 2));
   }
 };
