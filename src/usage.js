@@ -4,7 +4,7 @@ http-loop: send requests in a loop
 
 Usage:
   http-loop init
-  http-loop [method] [url] [num-iterations]
+  http-loop [method] [url] [iterations]
   http-loop [--options]
 
 set necessary input in the input/ directory

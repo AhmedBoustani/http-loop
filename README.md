@@ -1,15 +1,47 @@
-# http-loop :construction:
+# http-loop
 
-Send an HTTP request in a loop
+Send one HTTP request multiple times or one POST/PUT request with multiples inputs using http-loop.
+
+This is useful if you can't enter data in bulk to your API or you want to test its consistency.
+
+## Install
+```
+npm install -g http-loop
+```
 
 ## Usage
 
 ```
-http-loop init  
-http-loop [method] [url] [num-iterations]   
+http-loop init
+```
+This initializes the workspace by creating the following tree:
+```
+http-loop/
+└── input/
+  ├── headers.json
+  ├── body.json
+  └── params.json
+```
+set necessary headers, body, and params in the corresponding files
+```
+http-loop [method] [url] [iterations]
+```
+This sends the requests and stores the results in a single file in `logs/` named after the current time you made the request.
+```
+http-loop/
+├── input/
+|  ├── headers.json
+|  ├── body.json
+|  └── params.json
+└── logs
+   ├── ${timestamp}.json
+   ├── ${timestamp}.json
+   ├── ${timestamp}.json
+   ...
+```
+```
 http-loop [--options]
 ```
-set necessary input in the input/ directory
 
 ### Arguments:
 ```
@@ -27,16 +59,3 @@ init              Initializes the work directory called http-loop,
   -clr
 --head            print the last log registered
 ```
-### Help
-`node index.js --help` or `-h`
-
-### Input
-Insert necessary data in the `http-loop/input/` directory.
-
-`body.json`: body of the request (array)  
-`headers.json`: headers of the request  
-`params.json`: the query of the request
-
-## TODO:
-- write better documentation
-- publish to npm

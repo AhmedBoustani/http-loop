@@ -1,6 +1,6 @@
-const usage = require('./src/usage');
-const work = require('./src/workspace');
-const logs = require('./src/logs');
+const usage = require('./usage');
+const work = require('./workspace');
+const logs = require('./logs');
 
 process.argv.map((arg) => {
   switch (arg) {
