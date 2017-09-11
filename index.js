@@ -2,7 +2,7 @@ const usage = require('./src/usage');
 const work = require('./src/workspace');
 const logs = require('./src/logs');
 
-process.argv.map(arg => {
+process.argv.map((arg) => {
   switch (arg) {
     case 'init':
       work.init();

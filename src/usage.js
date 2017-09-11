@@ -21,7 +21,7 @@ Options:
   --clear-logs,     delete files in logs/ directory
     -clr
   --head            print the last log registered
-`
+`;
 
 module.exports = () => {
   console.log(text);

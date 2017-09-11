@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "send": "node index.js"
+    "start": "node index.js",
+    "lint": "./node_modules/.bin/eslint .js ."
   },
   "keywords": [
     "JS",
@@ -20,5 +21,10 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.9.1"
   }
 }

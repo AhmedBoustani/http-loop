@@ -21,10 +21,10 @@ module.exports = {
         process.exit(1);
       }
     });
-    const header = { "cache-control": "no-cache" };
+    const header = {'cache-control': 'no-cache'};
     fs.writeFileSync(`${work}/headers.json`, JSON.stringify(header, null, 2));
     fs.writeFileSync(`${work}/body.json`, JSON.stringify([{}], null, 2));
     fs.writeFileSync(`${work}/params.json`, JSON.stringify({}, null, 2));
     print.ok('Set up working directory http-loop');
   }
-}
+};

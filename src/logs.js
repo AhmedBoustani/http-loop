@@ -23,15 +23,15 @@ module.exports = {
     });
     const message = {
       options,
-      "Number of requests": n,
-      "Input size:": len,
-      "data": []
+      'Number of requests': n,
+      'Input size:': len,
+      'data': []
     };
     // log file header
     fs.writeFile(filePath,
       JSON.stringify(message, null, 2),
       (err) => {
-        if(err) {
+        if (err) {
           print.error(err);
           process.exit(1);
         }
@@ -58,14 +58,13 @@ module.exports = {
       print.ok('there are no logs to delete');
       process.exit(0);
     }
-    fs.readdirSync(dir).map(x => {
+    fs.readdirSync(dir).map((x) =>
       fs.unlink(`${dir}/${x}`, (err) => {
         if (err) {
           print.error(err);
           process.exit(1);
         }
-      });
-    });
+      }));
     print.ok('successfully deleted logs');
   },
 
@@ -76,7 +75,7 @@ module.exports = {
       print.info('There are no logs to show');
       return;
     }
-    const f = require(`${dir}/${files[files.length - 1]}`)
+    const f = require(`${dir}/${files[files.length - 1]}`);
     print.ok(files[files.length - 1]);
     print.log(JSON.stringify(f, null, 2));
   }
