@@ -11,7 +11,7 @@ http-loop [--options]
 ```
 set necessary input in the input/ directory
 
-####Arguments:
+### Arguments:
 ```
 init              Initializes the work directory called http-loop,
                     which contains the input files
@@ -20,7 +20,7 @@ init              Initializes the work directory called http-loop,
 [iterations]      The number of times to send the request (default 1)
 ```
 
-####Options:
+### Options:
 ```
 --help, -h        help
 --clear-logs,     delete files in logs/ directory
