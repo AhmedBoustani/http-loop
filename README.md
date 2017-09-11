@@ -39,4 +39,4 @@ Insert necessary data in the `http-loop/input/` directory.
 
 ## TODO:
 - write better documentation
-- add linter and setup .editorconfig for future updates
+- publish to npm
